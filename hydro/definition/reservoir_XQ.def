@@ -1,0 +1,22 @@
+#NAME
+XQ
+
+#REGULATION RULES
+1 IF( Qin<=0.0  | SL<1370.8  ): Qout=0.0
+2 IF( Qin<=20.0 & SL==1370.8 ): Qout=Qin
+3 IF( Qin<=20.0 & SL<=1378.8 ): Qout=max(Qin*(SL-1370.8)+Qin,20.0)
+4 IF( Qin>20.0  & SL<=1378.8 ): Qout=20.0
+5 IF( SL>1378.8              ): Qout=Func(SL)
+
+#POWER DISCHARGE
+8.0
+
+#FUNCTIONS
+Func = SL->Qout
+1370.8, 20
+1385.6, 107.5
+
+#STORAGE CURVE
+SL, V(1e+4)
+1360.8, 35.81
+1385.6, 10343.00
